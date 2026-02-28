@@ -1,0 +1,37 @@
+# Maintainer: Vladislav Nepogodin <nepogodin.vlad@gmail.com>
+# Contributor: SoulHarsh007 <admin@soulharsh007.dev>
+
+pkgname=cachyos-openbox-settings
+pkgdesc='CachyOS openbox settings'
+pkgver=1.0.4
+pkgrel=1
+arch=('any')
+url="https://github.com/cachyos/$pkgname"
+license=('GPL')
+makedepends=('coreutils')
+depends=('cachyos-zsh-config'
+    'cachyos-alacritty-config'
+    'picom'
+    'nerd-fonts-fantasque-sans-mono'
+    'noto-fonts' 'noto-fonts-emoji'
+    'ttf-fira-sans'
+    'char-white'
+    'dunst' 'nitrogen' 'openbox' 'rofi' 'sakura' 'tint2' 'obmenu-generator' 'perl-gtk3'
+    'mpd' 'mpc' 'ncmpcpp'
+    'alsa-utils' 'brightnessctl' 'imagemagick' 'scrot' 'w3m' 'wireless_tools' 'xclip' 'xsettingsd' 'xss-lock'
+    'thunar' 'thunar-archive-plugin' 'thunar-volman' 'ffmpegthumbnailer' 'tumbler'
+    'gsimplecal' 'mpv' 'parcellite' 'pavucontrol' 'viewnior' 'xfce4-power-manager'
+    'capitaine-cursors'
+    'polkit-gnome'
+    'cachyos-wallpapers'
+    'cachyos-nord-gtk-theme-git')
+install=$pkgname.install
+provides=('cachyos-desktop-settings')
+conflicts=('cachyos-desktop-settings' 'cachyos-picom-config')
+
+package() {
+    install -d $pkgdir/etc
+    install -d $pkgdir/usr
+    cp -rf "$startdir/etc"/* "$pkgdir/etc/"
+    cp -rf "$startdir/usr"/* "$pkgdir/usr/"
+}
