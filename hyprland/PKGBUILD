@@ -1,0 +1,15 @@
+pkgname=cachyos-hyprland-settings
+pkgdesc='CachyOS Hyprland Settings - Custom Sakura'
+pkgver=1.0.0
+pkgrel=1
+arch=('any')
+license=('GPL')
+source=('etc' 'usr')
+sha512sums=('SKIP' 'SKIP')
+depends=('hyprland' 'waybar' 'rofi-wayland' 'sakura' 'swaybg' 'swayidle' 'gtklock' 'polkit-gnome' 'qt5-wayland' 'qt6-wayland' 'xdg-desktop-portal-hyprland' 'dunst')
+package() {
+    install -d $pkgdir/etc
+    install -d $pkgdir/usr
+    cp -rf "$startdir/etc"/* "$pkgdir/etc/"
+    cp -rf "$startdir/usr"/* "$pkgdir/usr/"
+}
