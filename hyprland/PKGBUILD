@@ -4,8 +4,6 @@ pkgver=1.0.0
 pkgrel=1
 arch=('any')
 license=('GPL')
-source=('etc')
-sha512sums=('SKIP')
 depends=('hyprland' 'waybar' 'rofi-wayland' 'sakura' 'swaybg' 'swayidle' 'gtklock' 'polkit-gnome' 'qt5-wayland' 'qt6-wayland' 'xdg-desktop-portal-hyprland' 'mako' 'wofi' 'swaylock')
 package() {
     install -d $pkgdir/etc
