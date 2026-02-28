@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # Interrompe o script se ocorrer algum erro crítico
+cd "$(dirname "$0")"
+
 set -e
 
 echo "🚀 Iniciando instalação do CachyOS Openbox Custom (Sakura Mágica 2026)..."
@@ -24,11 +26,25 @@ mkdir -p ~/.config/openbox
 mkdir -p ~/.config/picom
 
 # Copiar os arquivos diretamente do repositório/clonado para a home do usuário
-cp -rf etc/skel/.config/openbox/* ~/.config/openbox/
-cp -rf etc/skel/.config/picom/* ~/.config/picom/
+# Copiar os arquivos diretamente do repositório/clonado para a home do usuário
+cp -rf etc/skel/.config/* ~/.config/
+cp -rf etc/skel/.local/* ~/.local/ 2>/dev/null || true
+cp -rf etc/skel/.themes ~/.themes
+cp -rf etc/skel/.scripts ~/.scripts
+cp -rf etc/skel/.icons ~/.icons
+cp -rf etc/skel/.wallpapers ~/.wallpapers
+cp -f etc/skel/.gtkrc-2.0 ~/
+cp -f etc/skel/.profile ~/
+cp -f etc/skel/.Xresources ~/
+cp -f etc/skel/.xinitrc ~/
+cp -f etc/skel/.joyfuld ~/
+
 
 # Garantir permissão de execução
 chmod +x ~/.config/openbox/autostart.sh
+# Garantindo execucao nos scripts auxiliares
+chmod +x ~/.joyfuld 2>/dev/null || true
+find ~/.scripts -type f -exec chmod +x {} \; 2>/dev/null || true
 
 echo "✅ Tudo pronto! O Sakura de fundo e o novo Picom foram configurados para o usuário $USER."
 echo "➡️  Para ver o resultado: Faça Logout e, na tela de login, selecione a sessão 'Openbox'."

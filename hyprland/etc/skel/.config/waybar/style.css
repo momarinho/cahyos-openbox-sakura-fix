@@ -14,12 +14,14 @@
     border: none;
     border-radius: 3px;
     min-height: 0;
+    min-width: 0;
     margin: 0.2em 0.3em 0.2em 0.3em;
 }
 
 /* The whole bar */
 #waybar {
-    background-color: transparent;
+    background-color: #1b1e28;
+    opacity: 0.9;
     color: #ffffff;
     transition-property: background-color;
     transition-duration: 0.5s;
@@ -32,8 +34,8 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 3px 5px;  /* Adjusted padding to reduce height */
-    margin: 3px 5px;    /* Reduced margin slightly */
+    padding: 5px 3px;  /* Adjusted padding to reduce height */
+    margin: 5px 3px;    /* Reduced margin slightly */
     border-radius: 6px;
     color: @foreground;
     background-color: #111827;
@@ -55,8 +57,9 @@ window#waybar.hidden {
 }
 
 #workspaces {
-    background-color: #111827;
-    border-radius: 14px;
+    background-color: transparent;
+    flex-direction: column;
+    border-radius: 0px;
     padding: 3px 6px;  /* Adjusted padding to reduce height */
 }
 
@@ -65,7 +68,7 @@ window#waybar.hidden {
     font-size: 15px;   /* Slightly smaller font size */
     font-weight: 800;
     color: @foreground;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 3px 6px;  /* Reduced padding */
     margin: 2px;
     opacity: 1;
@@ -101,25 +104,25 @@ window#waybar.hidden {
 #custom-weather.snowyIcyNight,
 #custom-weather.default {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 6px;  /* Adjusted padding */
 }
 
 #custom-screenshot_t {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 6px;
 }
 
 #custom-spotify {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 3px 12px;
 }
 
 #tray {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 6px;  /* Adjusted padding */
 }
 
@@ -137,13 +140,13 @@ window#waybar.hidden {
 
 #custom-power {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 6px;
 }
 
 #custom-storage {
     background-color: #111827;
-    border-radius: 14px;
+    border-radius: 0px;
     padding: 6px;
 }
 

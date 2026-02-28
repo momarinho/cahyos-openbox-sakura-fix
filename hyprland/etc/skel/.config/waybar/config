@@ -5,42 +5,26 @@
 
     "layer": "top",
 
-    "position": "top",
+    "position": "left",
 
-    //"height": 20,
+    //"width": 45,
 
-    "margin-left": 10,
+    "margin-left": 0,
     "margin-bottom": 0,
-    "margin-right": 10,
+    "margin-right": 0,
 
     "spacing": 5, // Gaps between modules (4px)
 
     "modules-left": [
-        //"custom/rofi",
-        "hyprland/workspaces",
-        //"hyprland/submap",
-        "temperature",
-        //"idle_inhibitor",
-        //"mpd"
-        "custom/spotify"
+        "custom/rofi",
+        "custom/power"
     ],
     "modules-center": [
-        //"hyprland/window"
-        "clock#date",
-        "custom/weather"
-        //"custom/gammastep"
+        "tray"
     ],
     "modules-right": [
-        "backlight",
-        "custom/storage",
-        "memory",
-        "cpu",
-        "battery",
-        //"pulseaudio",
-        "wireplumber",
-        "custom/screenshot_t",
-        "tray",
-        "custom/power"
+        "hyprland/workspaces",
+        "clock"
     ],
 
 

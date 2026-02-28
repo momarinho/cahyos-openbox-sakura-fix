@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 set -e
+cd "$(dirname "$0")"
+
 
 # ==============================================================================
 # Cores para o Terminal (Estilo end-4)
@@ -74,7 +76,9 @@ echo -e "${CYAN}[*] Passo 3: Injetando configs do Sakura Mágico + Atalhos do En
 mkdir -p "$HOME/.config/hypr"
 
 # Copia os arquivos ignorando a raiz de sistema e jogando direto na Home do usuário
-cp -rf etc/skel/.config/hypr/* "$HOME/.config/hypr/"
+cp -rf etc/skel/.config/* "$HOME/.config/"
+cp -rf etc/skel/.wallpapers "$HOME/" 2>/dev/null || true
+cp -f etc/skel/.profile "$HOME/"
 
 echo -e "${GREEN}[✔] Configurações aplicadas na sua Home!${NC}\n"
 
@@ -88,3 +92,5 @@ echo -e "O Hyprland com Sakura vivo no fundo já está alocado para o usuário $
 echo -e "➡️  Para ver a mágica, encerre sua sessão atual, mude para 'Hyprland' no seu Gerenciador de Login, e aproveite!"
 echo ""
 
+
+chmod +x ~/.config/waybar/*.sh ~/.config/waybar/*.py 2>/dev/null || true
