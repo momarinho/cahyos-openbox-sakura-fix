@@ -25,7 +25,7 @@ case "${1}" in
 
         [ -n "$WALLPAPER" ] || exit ${?}
 
-        nitrogen --force-setter=xwindows --set-zoom-fill --save "${CHK_WALLPAPER_DIR}/${WALLPAPER}"
+        feh --bg-fill "${CHK_WALLPAPER_DIR}/${WALLPAPER}"
 
         sed -e "/^wallpaper.${CHK_THEME}.${CHK_MODE}[ ]*/s|\".*\"$|\"${WALLPAPER}\"|" -i "$THEME_FILE"
 
