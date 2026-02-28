@@ -42,5 +42,39 @@ Este repositório contém configurações customizadas (com o terminal Sakura pr
 - [x] Remover dependências "fantasmas" (scripts customizados do End-4 que não existem na nossa ISO, como menus em ags ou scripts de volume.sh).
 
 ### 🚨 Fase 7: Revisão Arquitetural do Wayland (Conflitos e Camadas)
-- [ ] **Corrigir o Z-Index do Sakura:** Encontrar uma forma de forçar a janela flutuante 100% do Sakura a ficar na camada do papel de parede real (Desktop Layer), para não sobrepor janelas *tiling* convencionais.
+- [x] **Corrigir o Z-Index do Sakura:** Encontrar uma forma de forçar a janela flutuante 100% do Sakura a ficar na camada do papel de parede real (Desktop Layer), para não sobrepor janelas *tiling* convencionais.
 - [x] **Desativar Wallpaper Padrão:** Procurar e remover inicializações do `hyprpaper` ou `swaybg` no `autostart.conf` (já que o Sakura rodando `top` é o nosso wallpaper vivo, poupando muita CPU do sistema).
+
+---
+
+## 🚀 Como Instalar (Guia Rápido)
+
+Para ter a melhor experiência possível, sem excessos ou conflitos pesados (como KDE/GNOME), recomendamos partir de uma instalação limpa do CachyOS através do instalador gráfico regular:
+
+1. **Instale a Base CachyOS**:
+   Dê boot pela ISO padrão (Live USB), abra o instalador gráfico e responda todas as opções normalmente.
+   Na importante tela de escolha de **Ambientes Gráficos (Desktop Environments)**, preste muita atenção:
+   - **Desmarque** configurações pesadas e automáticas como KDE Plasma, GNOME, ou edições cheias.
+   - **Marque apenas** a edição *Openbox* na lista. Isso te dará uma base ultra leve e preparada com conectividade, som e uma tela de Senha (Login Manager), mas sem lixo desnecessário por trás.
+
+2. **Na primeira inicialização, abra o terminal e clone nosso monorepo mágico:**
+   ```bash
+   git clone https://github.com/momarinho/cahyos-openbox-sakura-fix.git
+   cd cahyos-openbox-sakura-fix
+   ```
+
+3. **Escolha a tecnologia do seu Desktop e Inicie o Instalador Integrado!**
+
+   - Para customizar a rota **Openbox (X11)**, injetando o terminal Sakura no fundo da Matrix e sombras luxuosas do Picom ajustado:
+     ```bash
+     cd openbox
+     ./install.sh
+     ```
+   
+   - Para adotar a rota **Hyprland (Wayland)**, recebendo nativamente a nossa engenharia com atalhos de movimento inspirados no incrível *end-4* dotfiles:
+     ```bash
+     cd hyprland
+     ./install-hyprland.sh
+     ```
+
+4. Após a conclusão espetacular do script, efetue um *Logout* e, na sua tela de Login, apenas certifique-se de mudar para o ambiente (Openbox ou Hyprland) que você acabou de instalar na roda da direita. Seja bem vindo!
