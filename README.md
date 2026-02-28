@@ -1,51 +1,36 @@
-# CachyOS Openbox Custom (Sakura + Picom Fix)
+# CachyOS Custom Monorepo 🚀
 
-Este repositório é um fork customizado (e independente) das configurações oficiais do **Openbox do CachyOS**. Como algumas dependências originais deixaram de ser mantidas (ex: `picom-ibhagwan-git`), este projeto foi atualizado e focado em estabilidade, modernidade e um visual "ninja" no desktop.
+Este repositório contém configurações customizadas (com o terminal Sakura preso no fundo da tela rodando `top` e sombras/arredondamentos luxuosos) para duas interfaces diferentes: **Openbox** (X11) e **Hyprland** (Wayland).
 
-## 🛠 O que foi alterado/adicionado?
+## 📋 Checklist de Transformação para o Hyprland
 
-1. **Picom Moderno:**
-   - Substituição do `picom-ibhagwan-git` pelo `picom` oficial do Arch.
-   - Configurações renovadas no `picom.conf` (`xrender`, sombras arredondadas, efeitos suaves de *fade in/out* e exclusão de sombras para docks/desktop).
-2. **Terminal Sakura no Fundo:**
-   - Troca do `rxvt-unicode` pelo moderno **Sakura**.
-   - O `autostart.sh` foi configurado para lançar o Sakura fixado em 100% da tela (`-g 100%x100%`) rodando o gerenciador de tarefas `top` como papel de parede dinâmico, sempre no fundo de todas as janelas.
-3. **Instalação Automatizada:**
-   - Criação do script `install.sh` para compilar o `PKGBUILD` localmente (sem precisar de fontes externas), instalar as dependências necessárias via Pacman e copiar as configurações finais diretamente para o usuário atual (`~/.config`).
+### 📦 Fase 1: Estrutura do Monorepo
+- [x] Criar a pasta base `hyprland/` e `openbox/` no repositório atual.
+- [x] Mover os arquivos atuais do Openbox (PKGBUILD, install.sh, etc e usr) para dentro da pasta `openbox/`.
+- [x] Atualizar o git para refletir essa nova organização limpa.
 
----
+### 🐧 Fase 2: Clonando a Base do CachyOS Hyprland
+- [ ] Baixar os arquivos padrão de configuração do CachyOS Hyprland diretamente na pasta `hyprland/`.
+- [ ] Preparar um `PKGBUILD` específico dentro da pasta `hyprland` com as dependências do ecossistema Wayland (ex: `hyprland`, `waybar`, `rofi-wayland`, `sakura`).
 
-## 🚀 Como Instalar
+### 🎨 Fase 3: Puxando o Visual (Refazendo o Picom no Wayland)
+- [ ] Editar o `hyprland.conf` base do CachyOS para ficar com o mesmo visual do Picom:
+  - [ ] Arredondamento (Rounding) = 12
+  - [ ] Sombra ativada (Drop Shadow) = true
+  - [ ] Alcance/Raio da Sombra (Shadow Range) = 12
+  - [ ] Offset da sombra = Dando aquele efeito 3D (-15, -15).
 
-Esta configuração é ideal se você estiver em um sistema Arch Linux, CachyOS ou em um ambiente Openbox limpo.
+### 🌸 Fase 4: O Sakura no Fundo ("A Mágica")
+- [ ] Configurar no `hyprland.conf` para iniciar o terminal automaticamente: `exec-once = sakura -e "top; bash" &`
+- [ ] **Criar as Regras de Janela (Window Rules) precisas para o Sakura:**
+  - [ ] `windowrulev2 = float, class:^(sakura)$`
+  - [ ] `windowrulev2 = size 100% 100%, class:^(sakura)$`
+  - [ ] `windowrulev2 = center, class:^(sakura)$`
+  - [ ] `windowrulev2 = noborder, class:^(sakura)$`
+  - [ ] `windowrulev2 = noshadow, class:^(sakura)$`
+  - [ ] `windowrulev2 = pin, class:^(sakura)$` (prender em todas as workspaces)
+  - [ ] Colocar o Sakura atrás de tudo (layer de fundo).
+  - [ ] `windowrulev2 = nofocus, class:^(sakura)$`
 
-### 1. Clone o repositório
-Abra seu terminal e rode:
-```bash
-git clone https://github.com/momarinho/cahyos-openbox-sakura-fix.git
-cd cahyos-openbox-sakura-fix
-```
-
-### 2. Rode o Script de Instalação Automática
-O repositório já conta com o script que resolve tudo com um comando:
-```bash
-./install.sh
-```
-> **O que o script faz?**
-> Ele usa o `makepkg` para empacotar o ambiente usando as configurações desta pasta, pedirá sua senha de `sudo` (apenas para o `pacman` instalar o pacote gerado e as dependências visuais) e por fim aplicará o `autostart.sh` e o `picom.conf` no seu diretório de usuário (`~/.config`).
-
----
-
-## 💻 Como Acessar a Sessão
-Se você usa outro ambiente (como KDE Plasma ou GNOME), estas configurações não afetarão o seu uso diário lá.
-Para ver o resultado:
-1. Salve seu trabalho atual e faça **Logout** (Encerrar Sessão).
-2. Na tela do seu Gerenciador de Login (Ex: SDDM, LightDM), clique seletor de sessões.
-3. Escolha a sessão **Openbox** (ou CachyOS Openbox).
-4. Insira sua senha e entre! O Sakura e o Picom customizado iniciarão automaticamente de fundo.
-
----
-
-### Agradecimentos / Créditos Originais
-- Base do projeto pelo [CachyOS](https://github.com/cachyos).
-- Configurações incríveis por [owl4ce](https://github.com/owl4ce/dotfiles/) ❤️.
+### ⚙️ Fase 5: Script de Instalação Automática
+- [ ] Criar um script `install-hyprland.sh` paralelo, para compilar e instalar o ambiente num clique.
